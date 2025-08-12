@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerPathAI | Find Your Future Career</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --light: #f9fafb;
+            --dark: #1f2937;
+            --gray: #6b7280;
+            --text: #374151;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links a {
+            margin-left: 1.5rem;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        main {
+            flex: 1;
+        }
+        
+        .hero {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+        
+        .how-it-works {
+            background-color: white;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            padding: 2rem;
+            border-radius: 1rem;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .step h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .step p {
+            color: var(--gray);
+        }
+        
+        .quiz-container {
+            background-color: #f8fafc;
+            padding: 4rem 2rem;
+            min-height: 60vh;
+        }
+        
+        .quiz-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .quiz-progress {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .quiz-question {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+        
+        .quiz-options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .quiz-option {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background-color: #f5f3ff;
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--primary);
+            background-color: #eef2ff;
+        }
+        
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .results {
+            display: none;
+        }
+        
+        .career-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .career-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .career-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .career-card h3 img {
+            width: 40px;
+            margin-right: 1rem;
+        }
+        
+        .career-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .meta-item {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: #f8fafc;
+        }
+        
+        .meta-item h4 {
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+        
+        .meta-item p {
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .coming-features h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .coming-features ul {
+            list-style: none;
+        }
+        
+        .coming-features li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .coming-features li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #4b5563;
+            color: #9ca3af;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .close-btn {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step {
+                width: 100%;
+                max-width: none;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .action-buttons .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="https://placehold.co/40x40" alt="CareerPathAI logo with graduation cap and AI symbol" />
+                CareerPathAI
+            </a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#quiz">Take Quiz</a>
+                <a href="#" id="about-link">About</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Find Your Future with AI</h1>
+                <p>Discover your ideal career path based on your personality, interests, and skills. Our AI-powered platform helps students make informed decisions about their future.</p>
+                <button class="btn btn-primary" id="start-quiz-btn">Start Career Quiz</button>
+            </div>
+        </section>
+        
+        <section id="how-it-works" class="section how-it-works">
+            <div class="container">
+                <h2 class="section-title">How CareerPathAI Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-icon">1</div>
+                        <h3>Take Our Quiz</h3>
+                        <p>Answer simple questions about your interests, skills, and preferences.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">2</div>
+                        <h3>AI Career Analysis</h3>
+                        <p>Our advanced AI analyzes your responses to identify suitable careers.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">3</div>
+                        <h3>Get Personalized Results</h3>
+                        <p>Receive detailed career options with education paths and salary insights.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="quiz" class="quiz-container">
+            <div class="quiz-wrapper">
+                <div id="quiz-intro">
+                    <h2 class="section-title">Career Assessment Quiz</h2>
+                    <p>This quiz will help us understand your skills, interests, and personality traits to recommend the best career options for you.</p>
+                    <p>There are 10 questions in total. Answer honestly based on your preferences.</p>
+                    <button class="btn btn-primary" id="begin-quiz-btn">Begin Quiz</button>
+                </div>
+                
+                <div id="quiz-content" style="display: none;">
+                    <div class="quiz-progress">
+                        <div class="progress-bar" id="quiz-progress-bar"></div>
+                    </div>
+                    <h3 class="quiz-question" id="quiz-question">Question goes here</h3>
+                    <div class="quiz-options" id="quiz-options">
+                        <!-- Options will be inserted by JavaScript -->
+                    </div>
+                    <div class="quiz-nav">
+                        <button class="btn btn-outline" id="quiz-back-btn">Back</button>
+                        <button class="btn btn-primary" id="quiz-next-btn">Next</button>
+                    </div>
+                </div>
+                
+                <div id="results" class="results">
+                    <h2 class="section-title">Your Career Matches</h2>
+                    <div id="career-results">
+                        <!-- Career results will be inserted by JavaScript -->
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" id="save-pdf-btn">Save as PDF</button>
+                        <button class="btn btn-accent" id="email-results-btn">Email Results</button>
+                        <button class="btn btn-outline" id="retake-quiz-btn">Retake Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="https://placehold.co/40x40" alt="CareerPathAI logo with graduation cap and AI symbol" />
+                    CareerPathAI
+                </div>
+                <p>Helping students discover their ideal career paths through AI-powered analysis.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#quiz">Take Quiz</a></li>
+                    <li><a href="#" id="about-link-footer">About</a></li>
+                </ul>
+            </div>
+            <div class="coming-features">
+                <h4>Coming Soon Features</h4>
+                <ul>
+                    <li>College location finder for chosen careers</li>
+                    <li>Salary comparison by city/country</li>
+                    <li>Real mentor connection for career guidance</li>
+                    <li>Internship opportunities tailored to your path</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 CareerPathAI. All rights reserved.
+        </div>
+    </footer>
+    
+    <!-- Email Results Modal -->
+    <div id="email-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Email Your Results</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <form id="email-form">
+                <div class="form-group">
+                    <label for="email-address">Email Address</label>
+                    <input type="email" id="email-address" required>
+                </div>
+                <div class="form-group">
+                    <label for="email-message">Additional Message (optional)</label>
+                    <textarea id="email-message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Email</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Quiz Questions
+        const questions = [
+            {
+                question: "Which subjects interest you the most?",
+                options: [
+                    "Mathematics and Science",
+                    "Arts and Humanities",
+                    "Technology and Computers",
+                    "Business and Economics",
+                    "Social Sciences and Psychology"
+                ]
+            },
+            {
+                question: "What type of work environment do you prefer?",
+                options: [
+                    "Structured office environment",
+                    "Creative and flexible space",
+                    "Working independently from home",
+                    "Fast-paced and dynamic",
+                    "Helping others directly"
+                ]
+            },
+            {
+                question: "Which skills best describe you?",
+                options: [
+                    "Analytical and problem-solving",
+                    "Creative and innovative",
+                    "Technical and detail-oriented",
+                    "Leadership and communication",
+                    "Empathetic and caring"
+                ]
+            },
+            {
+                question: "What motivates you the most?",
+                options: [
+                    "Solving complex problems",
+                    "Creating something new",
+                    "Learning new technologies",
+                    "Achieving financial success",
+                    "Making a difference in people's lives"
+                ]
+            },
+            {
+                question: "How do you prefer to work?",
+                options: [
+                    "Independently with clear goals",
+                    "Collaboratively on creative projects",
+                    "Hands-on with technology",
+                    "Leading and managing teams",
+                    "Interacting with people daily"
+                ]
+            },
+            {
+                question: "Which extracurricular activities interest you?",
+                options: [
+                    "Science clubs or competitions",
+                    "Art, music, or writing",
+                    "Coding or robotics",
+                    "Debate or business clubs",
+                    "Volunteering or community service"
+                ]
+            },
+            {
+                question: "What type of challenges do you enjoy?",
+                options: [
+                    "Logical puzzles and problems",
+                    "Expressing ideas creatively",
+                    "Building and fixing things",
+                    "Negotiating and persuading",
+                    "Understanding people's needs"
+                ]
+            },
+            {
+                question: "How important is job stability to you?",
+                options: [
+                    "Very important",
+                    "Somewhat important",
+                    "Moderately important",
+                    "Less important than growth",
+                    "Not a primary concern"
+                ]
+            },
+            {
+                question: "What are your salary expectations?",
+                options: [
+                    "Above average - financial security is important",
+                    "Comfortable but not primary focus",
+                    "High potential earnings",
+                    "Variable based on performance",
+                    "Secondary to meaningful work"
+                ]
+            },
+            {
+                question: "Where do you see yourself in 10 years?",
+                options: [
+                    "Working in research or academia",
+                    "Pursuing creative passions",
+                    "In a tech leadership role",
+                    "Running my own business",
+                    "Helping others professionally"
+                ]
+            }
+        ];
+        
+        // Career Matches based on quiz responses
+        const careerMatches = {
+            "STEM": [
+                {
+                    title: "Data Scientist",
+                    description: "Data scientists analyze and interpret complex data to help organizations make informed decisions. They combine statistical analysis, machine learning, and data visualization skills.",
+                    salaryRange: "₹8,00,000 - ₹20,00,000",
+                    salaryRangeUSD: "$80,000 - $150,000",
+                    education: "Bachelor's in Computer Science, Mathematics, or Statistics. Many pursue Master's degrees or PhDs.",
+                    image: "https://placehold.co/300x200?text=Data+Science"
+                },
+                {
+                    title: "Biomedical Engineer",
+                    description: "Biomedical engineers develop medical devices and equipment, combining engineering principles with medical science to improve healthcare.",
+                    salaryRange: "₹6,00,000 - ₹15,00,000",
+                    salaryRangeUSD: "$60,000 - $120,000",
+                    education: "Bachelor's in Biomedical Engineering or related field.",
+                    image: "https://placehold.co/300x200?text=Biomedical+Engineering"
+                }
+            ],
+            "Creative": [
+                {
+                    title: "UX/UI Designer",
+                    description: "UX/UI designers create intuitive and aesthetically pleasing digital interfaces that enhance user experience for websites and applications.",
+                    salaryRange: "₹5,00,000 - ₹15,00,000",
+                    salaryRangeUSD: "$50,000 - $100,000",
+                    education: "Bachelor's in Design, Human-Computer Interaction, or related field. Portfolio is key.",
+                    image: "https://placehold.co/300x200?text=UX+Design"
+                },
+                {
+                    title: "Content Strategist",
+                    description: "Content strategists plan and create compelling content that engages audiences and achieves business goals across digital platforms.",
+                    salaryRange: "₹4,00,000 - ₹12,00,000",
+                    salaryRangeUSD: "$40,000 - $80,000",
+                    education: "Bachelor's in Communications, Marketing, or related field.",
+                    image: "https://placehold.co/300x200?text=Content+Creation"
+                }
+            ],
+            "Tech": [
+                {
+                    title: "Software Engineer",
+                    description: "Software engineers design, develop, and maintain software applications and systems using programming languages and frameworks.",
+                    salaryRange: "₹6,00,000 - ₹20,00,000",
+                    salaryRangeUSD: "$70,000 - $150,000",
+                    education: "Bachelor's in Computer Science or related field. Coding bootcamps also common.",
+                    image: "https://placehold.co/300x200?text=Software+Engineering"
+                },
+                {
+                    title: "Cybersecurity Analyst",
+                    description: "Cybersecurity analysts protect organizations' computer systems and networks from cyber threats and security breaches.",
+                    salaryRange: "₹7,00,000 - ₹18,00,000",
+                    salaryRangeUSD: "$75,000 - $130,000",
+                    education: "Bachelor's in Cybersecurity, Computer Science, or related field. Certifications important.",
+                    image: "https://placehold.co/300x200?text=Cybersecurity"
+                }
+            ],
+            "Business": [
+                {
+                    title: "Management Consultant",
+                    description: "Management consultants help organizations solve problems, improve performance, and implement changes to achieve business objectives.",
+                    salaryRange: "₹10,00,000 - ₹25,00,000",
+                    salaryRangeUSD: "$90,000 - $200,000",
+                    education: "Bachelor's in Business, Economics, or related field. MBA preferred.",
+                    image: "https://placehold.co/300x200?text=Consulting"
+                },
+                {
+                    title: "Financial Analyst",
+                    description: "Financial analysts assess investment opportunities, analyze financial data, and make recommendations to businesses and individuals.",
+                    salaryRange: "₹6,00,000 - ₹15,00,000",
+                    salaryRangeUSD: "$60,000 - $120,000",
+                    education: "Bachelor's in Finance, Accounting, or related field. CFA certification beneficial.",
+                    image: "https://placehold.co/300x200?text=Financial+Analysis"
+                }
+            ],
+            "Helping": [
+                {
+                    title: "Clinical Psychologist",
+                    description: "Clinical psychologists assess and treat mental health disorders through therapy and psychological testing.",
+                    salaryRange: "₹5,00,000 - ₹15,00,000",
+                    salaryRangeUSD: "$50,000 - $100,000",
+                    education: "Bachelor's in Psychology followed by Master's and Doctorate in Clinical Psychology.",
+                    image: "https://placehold.co/300x200?text=Psychology"
+                },
+                {
+                    title: "Social Worker",
+                    description: "Social workers help individuals, families, and communities cope with challenges through counseling, advocacy, and connecting them with resources.",
+                    salaryRange: "₹3,00,000 - ₹10,00,000",
+                    salaryRangeUSD: "$35,000 - $70,000",
+                    education: "Bachelor's in Social Work (BSW) or Master's in Social Work (MSW).",
+                    image: "https://placehold.co/300x200?text=Social+Work"
+                }
+            ]
+        };
+        
+        // DOM Elements
+        const quizIntro = document.getElementById('quiz-intro');
+        const quizContent = document.getElementById('quiz-content');
+        const resultsSection = document.getElementById('results');
+        const startQuizBtn = document.getElementById('start-quiz-btn');
+        const beginQuizBtn = document.getElementById('begin-quiz-btn');
+        const quizQuestion = document.getElementById('quiz-question');
+        const quizOptions = document.getElementById('quiz-options');
+        const quizProgressBar = document.getElementById('quiz-progress-bar');
+        const quizBackBtn = document.getElementById('quiz-back-btn');
+        const quizNextBtn = document.getElementById('quiz-next-btn');
+        const careerResults = document.getElementById('career-results');
+        const savePdfBtn = document.getElementById('save-pdf-btn');
+        const emailResultsBtn = document.getElementById('email-results-btn');
+        const retakeQuizBtn = document.getElementById('retake-quiz-btn');
+        const emailModal = document.getElementById('email-modal');
+        const closeModalBtn = document.querySelector('.close-btn');
+        const emailForm = document.getElementById('email-form');
+        
+        // Quiz State
+        let currentQuestionIndex = 0;
+        let selectedAnswers = [];
+        
+        // Event Listeners
+        startQuizBtn.addEventListener('click', startQuiz);
+        beginQuizBtn.addEventListener('click', beginQuiz);
+        quizBackBtn.addEventListener('click', goToPreviousQuestion);
+        quizNextBtn.addEventListener('click', goToNextQuestion);
+        savePdfBtn.addEventListener('click', saveAsPdf);
+        emailResultsBtn.addEventListener('click', showEmailModal);
+        closeModalBtn.addEventListener('click', hideEmailModal);
+        emailForm.addEventListener('submit', sendEmailResults);
+        retakeQuizBtn.addEventListener('click', retakeQuiz);
+        
+        // Initialize
+        updateProgressBar();
+        
+        // Functions
+        function startQuiz() {
+            document.getElementById('quiz').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        function beginQuiz() {
+            quizIntro.style.display = 'none';
+            quizContent.style.display = 'block';
+            showQuestion();
+        }
+        
+        function showQuestion() {
+            const question = questions[currentQuestionIndex];
+            quizQuestion.textContent = question.question;
+            
+            quizOptions.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('quiz-option');
+                if (selectedAnswers[currentQuestionIndex] === index) {
+                    optionElement.classList.add('selected');
+                }
+                optionElement.textContent = option;
+                optionElement.dataset.index = index;
+                optionElement.addEventListener('click', selectAnswer);
+                quizOptions.appendChild(optionElement);
+            });
+            
+            quizBackBtn.style.visibility = currentQuestionIndex === 0 ? 'hidden' : 'visible';
+            
+            if (currentQuestionIndex === questions.length - 1) {
+                quizNextBtn.textContent = 'Submit';
+            } else {
+                quizNextBtn.textContent = 'Next';
+            }
+        }
+        
+        function selectAnswer(e) {
+            const selectedOptionIndex = parseInt(e.target.dataset.index);
+            
+            // Deselect all options
+            const options = quizOptions.querySelectorAll('.quiz-option');
+            options.forEach(option => option.classList.remove('selected'));
+            
+            // Select clicked option
+            e.target.classList.add('selected');
+            
+            // Store answer
+            selectedAnswers[currentQuestionIndex] = selectedOptionIndex;
+        }
+        
+        function goToPreviousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+                updateProgressBar();
+            }
+        }
+        
+        function goToNextQuestion() {
+            // Check if an answer is selected
+            if (selectedAnswers[currentQuestionIndex] === undefined && quizNextBtn.textContent !== 'Submit') {
+                alert('Please select an answer before proceeding.');
+                return;
+            }
+            
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+                updateProgressBar();
+            } else {
+                // Quiz completed, show results
+                showResults();
+            }
+        }
+        
+        function updateProgressBar() {
+            const progressPercentage = (currentQuestionIndex / questions.length) * 100;
+            quizProgressBar.style.width = `${progressPercentage}%`;
+        }
+        
+        function showResults() {
+            quizContent.style.display = 'none';
+            resultsSection.style.display = 'block';
+            
+            // Simple scoring - in a real app, this would involve more complex AI analysis
+            const answerSums = [0, 0, 0, 0, 0]; // STEM, Creative, Tech, Business, Helping
+            selectedAnswers.forEach((answer, index) => {
+                answerSums[Math.floor(answer / 2)]++;
+            });
+            
+            const maxScore = Math.max(...answerSums);
+            const careerTypes = ["STEM", "Creative", "Tech", "Business", "Helping"];
+            const userCareerTypes = [];
+            
+            answerSums.forEach((score, index) => {
+                if (score === maxScore) {
+                    userCareerTypes.push(careerTypes[index]);
+                }
+            });
+            
+            // Display career matches
+            careerResults.innerHTML = '';
+            userCareerTypes.forEach(type => {
+                careerMatches[type].forEach(career => {
+                    const careerCard = document.createElement('div');
+                    careerCard.className = 'career-card';
+                    careerCard.innerHTML = `
+                        <h3>
+                            <img src="${career.image}" alt="${career.title} icon" />
+                            ${career.title}
+                        </h3>
+                        <p>${career.description}</p>
+                        <div class="career-meta">
+                            <div class="meta-item">
+                                <h4>Salary Range</h4>
+                                <p>${career.salaryRange}</p>
+                                <p>${career.salaryRangeUSD}</p>
+                            </div>
+                            <div class="meta-item">
+                                <h4>Education Path</h4>
+                                <p>${career.education}</p>
+                            </div>
+                        </div>
+                    `;
+                    careerResults.appendChild(careerCard);
+                });
+            });
+            
+            // Scroll to results
+            setTimeout(() => {
+                resultsSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+        
+        function retakeQuiz() {
+            currentQuestionIndex = 0;
+            selectedAnswers = [];
+            
+            resultsSection.style.display = 'none';
+            quizIntro.style.display = 'block';
+            
+            document.getElementById('quiz').scrollIntoView({
+                behavior: 'smooth'
+            });
+            
+            updateProgressBar();
+        }
+        
+        function saveAsPdf() {
+            alert('This feature would generate and download a PDF of your career results in a production environment.');
+        }
+        
+        function showEmailModal() {
+            emailModal.style.display = 'flex';
+        }
+        
+        function hideEmailModal() {
+            emailModal.style.display = 'none';
+        }
+        
+        function sendEmailResults(e) {
+            e.preventDefault();
+            const email = document.getElementById('email-address').value;
+            const message = document.getElementById('email-message').value;
+            
+            alert(`This feature would email your career results to ${email} with your message: "${message}" in a production environment.`);
+            
+            hideEmailModal();
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
